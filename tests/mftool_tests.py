@@ -5,100 +5,100 @@ import unittest
 import logging
 import json
 import six
-from mftool import Mftool
+from MFLib import MFLib
 from utils import is_holiday, get_friday, get_today
 
-log = logging.getLogger('mftool')
+log = logging.getLogger('MFLib')
 logging.basicConfig(level=logging.DEBUG)
 
 
 class TestAPIs(unittest.TestCase):
     def setUp(self):
-        self.mftool = Mftool()
+        self.MFLib = MFLib()
 
     def test_get_scheme_codes(self):
-        sc = self.mftool.get_scheme_codes()
+        sc = self.MFLib.get_scheme_codes()
         self.assertIsNotNone(sc)
         self.assertIsInstance(sc, dict)
         # test the json format return
-        sc_json = self.mftool.get_scheme_codes(as_json=True)
+        sc_json = self.MFLib.get_scheme_codes(as_json=True)
         self.assertIsInstance(sc_json, str)
         # reconstruct the dict from json and compare
         six.assertCountEqual(self, sc, json.loads(sc_json))
-        result = self.mftool.get_available_schemes('ICICI')
+        result = self.MFLib.get_available_schemes('ICICI')
         self.assertNotIn(result[next(iter(result))], "Axis")
 
     def test_is_valid_code(self):
         code = '119598'
-        self.assertTrue(self.mftool.is_valid_code(code))
+        self.assertTrue(self.MFLib.is_valid_code(code))
 
     def test_negative_is_valid_code(self):
         wrong_code = '1195'
-        self.assertFalse(self.mftool.is_valid_code(wrong_code))
+        self.assertFalse(self.MFLib.is_valid_code(wrong_code))
 
     def test_get_scheme_quote(self):
         code = '101305'
-        self.assertIsInstance(self.mftool.get_scheme_quote(code), dict)
-        # with json respomftool
-        self.assertIsInstance(self.mftool.get_scheme_quote(code, as_json=True), str)
+        self.assertIsInstance(self.MFLib.get_scheme_quote(code), dict)
+        # with json respoMFLib
+        self.assertIsInstance(self.MFLib.get_scheme_quote(code, as_json=True), str)
         # with wrong code
         code = 'wrong code'
-        self.assertIsNone(self.mftool.get_scheme_quote(code))
+        self.assertIsNone(self.MFLib.get_scheme_quote(code))
         # with code in 'int' format
         code = 101305
-        self.assertIsInstance(self.mftool.get_scheme_quote(code), dict)
+        self.assertIsInstance(self.MFLib.get_scheme_quote(code), dict)
         # verify data present
-        result = self.mftool.get_scheme_quote(code)
+        result = self.MFLib.get_scheme_quote(code)
         self.assertIsNotNone(result)
 
     def test_get_scheme_historical_nav(self):
         code = '101305'
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav(code), dict)
-        # with json respomftool
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav(code, as_json=True), str)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav(code), dict)
+        # with json respoMFLib
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav(code, as_json=True), str)
         # with wrong code
         code = 'wrong code'
-        self.assertIsNone(self.mftool.get_scheme_historical_nav(code))
+        self.assertIsNone(self.MFLib.get_scheme_historical_nav(code))
         # with code in 'int' format
         code = 101305
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav(code), dict)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav(code), dict)
         # verify data present
-        result = self.mftool.get_scheme_historical_nav(code)
+        result = self.MFLib.get_scheme_historical_nav(code)
         self.assertIsNotNone(result)
 
     def test_get_scheme_details(self):
         code = '101305'
-        self.assertIsInstance(self.mftool.get_scheme_details(code), dict)
-        # with json respomftool
-        self.assertIsInstance(self.mftool.get_scheme_details(code, as_json=True), str)
+        self.assertIsInstance(self.MFLib.get_scheme_details(code), dict)
+        # with json respoMFLib
+        self.assertIsInstance(self.MFLib.get_scheme_details(code, as_json=True), str)
         # with wrong code
         code = 'wrong code'
-        self.assertIsNone(self.mftool.get_scheme_details(code))
+        self.assertIsNone(self.MFLib.get_scheme_details(code))
         # with code in 'int' format
         code = 101305
-        self.assertIsInstance(self.mftool.get_scheme_details(code), dict)
+        self.assertIsInstance(self.MFLib.get_scheme_details(code), dict)
         # verify data present
-        result = self.mftool.get_scheme_details(code)
+        result = self.MFLib.get_scheme_details(code)
         self.assertIsNotNone(result)
 
     def test_calculate_balance_units_value(self):
         code = '101305'
-        result = self.mftool.calculate_balance_units_value(code, 221)
+        result = self.MFLib.calculate_balance_units_value(code, 221)
         self.assertIsNotNone(result)
 
     def test_get_scheme_historical_nav_year(self):
         code = '101305'
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_year(code, 2018), dict)
-        # with json respomftool
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_year(code, 2018, as_json=True), str)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_year(code, 2018), dict)
+        # with json respoMFLib
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_year(code, 2018, as_json=True), str)
         # with wrong code
         code = 'wrong code'
-        self.assertIsNone(self.mftool.get_scheme_historical_nav_year(code, 2018))
+        self.assertIsNone(self.MFLib.get_scheme_historical_nav_year(code, 2018))
         # with code in 'int' format
         code = 101305
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_year(code, 2018), dict)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_year(code, 2018), dict)
         # verify data present
-        result = self.mftool.get_scheme_historical_nav_year(code, 2018)
+        result = self.MFLib.get_scheme_historical_nav_year(code, 2018)
         self.assertIsNotNone(result)
 
     def test_get_day(self):
@@ -109,23 +109,23 @@ class TestAPIs(unittest.TestCase):
 
     def test_get_scheme_historical_nav_for_dates(self):
         code = '101305'
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'), dict)
-        # with json respomftool
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018', as_json=True), str)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'), dict)
+        # with json respoMFLib
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018', as_json=True), str)
         # with wrong code
         code = 'wrong code'
-        self.assertIsNone(self.mftool.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'))
+        self.assertIsNone(self.MFLib.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'))
         # with code in 'int' format
         code = 101305
-        self.assertIsInstance(self.mftool.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'), dict)
+        self.assertIsInstance(self.MFLib.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018'), dict)
         # verify data present
-        result = self.mftool.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018')
+        result = self.MFLib.get_scheme_historical_nav_for_dates(code,'1-1-2018','31-12-2018')
         self.assertIsNotNone(result)
 
     def test_get_open_ended_equity_scheme_performance(self):
-        self.assertIsInstance(self.mftool.get_open_ended_equity_scheme_performance(False), dict)
+        self.assertIsInstance(self.MFLib.get_open_ended_equity_scheme_performance(False), dict)
         # verify data present
-        result = self.mftool.get_open_ended_equity_scheme_performance(False)
+        result = self.MFLib.get_open_ended_equity_scheme_performance(False)
         self.assertNotEqual(result,{'Large Cap': [],'Large & Mid Cap': [],'Multi Cap': [],'Mid Cap': [],
                                     'Small Cap': [],'Value': [],'ELSS': [],'Contra': [],'Dividend Yield': [],
                                     'Focused': []})

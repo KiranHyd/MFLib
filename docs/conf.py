@@ -3,7 +3,7 @@ from recommonmark.parser import CommonMarkParser
 
 # -- Project information -----------------------------------------------------
 
-project = 'mftool'
+project = 'MFLib'
 
 # The short X.Y version
 version = ''
@@ -13,7 +13,7 @@ release = '2.9'
 # The master toctree document.
 master_doc = 'index'
 
-html_favicon = 'mftool.png'
+html_favicon = 'MFLib.png'
 
 html_static_path = ['_static']
 

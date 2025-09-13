@@ -1,7 +1,7 @@
 Introduction
 ============
 
-mftool is a library for getting publically available real time Mutual Funds data in India.
+MFLib is a library for getting publically available real time Mutual Funds data in India.
 It can be used in various types of projects which requires getting live quotes for a given scheme or build large data sets for further data analytics.
 The accuracy of data is only as correct as provided on amfiindia
 
@@ -26,18 +26,18 @@ Main Features
 Installation
 ============
 
-Installing mftool is very simple and it has no external dependencies. All its dependencies
+Installing MFLib is very simple and it has no external dependencies. All its dependencies
 are part of standard python distribution. 
 packages::
 
-    pip install mftool
+    pip install MFLib
 
 Update
 ===============
 
 To updated to the lasted version::
 
-    pip install mftool --upgrade
+    pip install MFLib --upgrade
 
 
 A Word On Exception Handling 
@@ -55,7 +55,7 @@ exception.
 Library Walkthrough with Examples
 =============================
 
-In this section we will focus on the basic usage and cover all the APIs which mftool offer.
+In this section we will focus on the basic usage and cover all the APIs which MFLib offer.
 Though I would encourage you to take a look at the code and unittests in case you want to 
 further customize it.
 
@@ -70,11 +70,11 @@ further customize it.
 Instantiation
 --------------
 
-As mentioned earlier, mftool comes pre-built with all the right url mappings and hence 
+As mentioned earlier, MFLib comes pre-built with all the right url mappings and hence 
 instantiating it requires no contructor arguments.
 
->>> from mftool import Mftool
->>> mf = Mftool()
+>>> from MFLib import MFLib
+>>> mf = MFLib()
 >>> print(mf)
 Driver Class for The Association of Mutual Funds in India (AMFI)
 

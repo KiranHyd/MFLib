@@ -1,6 +1,6 @@
 """
     The MIT License (MIT)
-    Copyright (c) 2024 Sujit Nayakwadi
+    Copyright (c) 2024 Kiran
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@ from .utils import Utilities, is_holiday, get_today, get_friday, render_response
 import pandas as pd
 
 
-class Mftool:
+class MFLib:
     """
     class which implements all the functionality for
     Mutual Funds in India
