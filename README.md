@@ -29,3 +29,57 @@ Features
 
 <a href="https://buymeacoffee.com/kiranch" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="29" width="174">
 </a>
+
+
+---
+
+# Development Instructions
+
+## Running and Debugging
+
+1. **Clone the repository and set up a virtual environment:**
+	```bash
+	git clone <your-repo-url>
+	cd MFLib
+	python3 -m venv venv
+	source venv/bin/activate
+	pip install -r requirements.txt
+	```
+
+2. **Run or debug in VS Code:**
+	- Open the folder in VS Code.
+	- Press `F5` or use the Run/Debug panel to start debugging.
+	- Ensure the Python interpreter is set to your virtual environment (`venv`).
+
+3. **Run tests (if available):**
+	```bash
+	python -m unittest discover tests
+	```
+
+## Building the Package
+
+1. **Install build tools:**
+	```bash
+	pip install build
+	```
+
+2. **Build the package:**
+	```bash
+	python -m build
+	```
+	This will create `dist/` with `.tar.gz` and `.whl` files.
+
+## Publishing to PyPI
+
+1. **Install Twine:**
+	```bash
+	pip install twine
+	```
+
+2. **Upload to PyPI:**
+	```bash
+	twine upload dist/*
+	```
+	You will be prompted for your PyPI credentials.
+
+---
