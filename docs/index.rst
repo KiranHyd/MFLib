@@ -9,7 +9,7 @@ The accuracy of data is only as correct as provided on amfiindia
 Github Project Page
 ===================
 
-https://github.com/NayakwadiS/mftool
+https://github.com/KiranHyd/MFLib
 
 
 Main Features
@@ -117,7 +117,7 @@ we need is Code for this company.
 
     Always use AMFI codes of schemes.
 	All scheme codes are presented here -
-	https://raw.githubusercontent.com/NayakwadiS/mftool/master/data/Scheme_codes.txt
+	https://raw.githubusercontent.com/KiranHyd/MFLib/master/data/Scheme_codes.txt
 	or 
 	use mf.get_scheme_codes()
 	
@@ -142,7 +142,7 @@ To get more scheme details
 .. note:: 
 
     only use new scheme codes to get info presented here-
-    https://github.com/NayakwadiS/Forecasting_Mutual_Funds/blob/master/codes.json
+    https://github.com/KiranHyd/Forecasting_Mutual_Funds/blob/master/codes.json
     
 
 List of Mutual Funds Scheme Codes & Names
@@ -223,7 +223,7 @@ date
 .. note:: 
 
     To use mf.history(), we have to use new scheme codes presented here-
-    https://github.com/NayakwadiS/Forecasting_Mutual_Funds/blob/master/codes.json
+    https://github.com/KiranHyd/Forecasting_Mutual_Funds/blob/master/codes.json
     
 
 Calculate Market value of Units
@@ -341,10 +341,10 @@ plot and Compare trend of mutual funds
 Related Projects
 ===================
 1. Forecasting Mutual Funds -
-	https://github.com/NayakwadiS/Forecasting_Mutual_Funds
+	https://github.com/KiranHyd/Forecasting_Mutual_Funds
 	
 2. Predict Cryptocurrency in Indian Rupee-
-	https://github.com/NayakwadiS/Predict_Cryptocurrency_INR
+	https://github.com/KiranHyd/Predict_Cryptocurrency_INR
 
 
 .. disqus::
