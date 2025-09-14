@@ -18,6 +18,7 @@
     SOFTWARE.
 """
 # -*- coding: UTF-8 -*-
+import pytz
 import requests
 import httpx
 from bs4 import BeautifulSoup
@@ -28,7 +29,6 @@ from matplotlib import pyplot as plt
 from .utils import Utilities, is_holiday, get_today, get_friday, render_response
 import pandas as pd
 
-
 class MFLib:
     """
     class which implements all the functionality for
@@ -38,8 +38,8 @@ class MFLib:
         self._session = requests.session()
         self._const = Utilities().values
         # URL list
-        self._get_quote_url = self._const['get_quote_url']
         self._get_scheme_url = self._const['get_scheme_url']
+        self._get_quote_url = self._const['get_quote_url']
         self._get_amc_details_url = self._const['get_amc_details_url']
         self._get_open_ended_equity_scheme_url = self._const['get_open_ended_equity_scheme_url']
         self._get_avg_aum = self._const['get_avg_aum_url']
@@ -63,6 +63,15 @@ class MFLib:
         """
         self._session.proxies = proxy
 
+
+    # Generate current IST timestamp in required format
+    def get_timestamp(self):
+        ist = pytz.timezone("Asia/Kolkata")
+        now = datetime.datetime.now(ist)
+        return now.strftime("%d%m%Y%H%M%S")
+    
+
+
     def get_scheme_codes(self, as_json=False):
         """
         returns a dictionary with key as scheme code and value as scheme name.
@@ -70,7 +79,10 @@ class MFLib:
         :return: dict / json
         """
         scheme_info = {}
-        url = self._get_quote_url
+
+        ts = self.get_timestamp()
+
+        url = self._get_quote_url + f"?t={ts}"
         response = self._session.get(url)
         data = response.text.split("\n")
         for scheme_data in data:
